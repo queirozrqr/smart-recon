@@ -1,2 +1,3 @@
 # Smart-Recon
-Treinamento Smart Recon para Pentest
+Treinamento DESEC Smart Recon para Pentest
+https://desecsecurity.com/academy/smart-recon
