@@ -26,7 +26,7 @@ RUN apt-get install python3-pip -y
 
 RUN pip3 install uuid
 
-RUN GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN mv /root/go/bin/subfinder /usr/bin/
 
 RUN apt-get install sublist3r -y
@@ -43,12 +43,14 @@ RUN mv /root/go/bin/assetfinder /usr/bin/
 RUN go get -u github.com/openrdap/rdap/cmd/rdap
 RUN mv /root/go/bin/rdap /usr/bin/
 
-RUN GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 RUN mv /root/go/bin/httpx /usr/bin/
 
 RUN go get github.com/tomnomnom/waybackurls
 RUN mv /root/go/bin/waybackurls /usr/bin/
 
-RUN GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 RUN mv /root/go/bin/nuclei /usr/bin/
 RUN nuclei -update-templates
+
+
