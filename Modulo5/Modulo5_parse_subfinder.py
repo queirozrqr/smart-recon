@@ -20,11 +20,11 @@ headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
 url = 'https://localhost:9200/'+target+'-subdomain/_doc?refresh'
 auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
 hora = strftime("%Y-%m-%dT%H:%M:%S%Z")
-scanner = 'assetfinder'
+scanner = 'subfinder'
 dic_subdomain = {}
 x = str(uuid.uuid1()).split('-')[0]
-container_name = target+'-'+x+'-assetfinder'
-saida = 'assetfinder-'+x+'.txt'
+container_name = target+'-'+x+'-subfinder'
+saida = 'subfinder-'+x+'.txt'
 
 def rdap_ip(ip):
     try:
@@ -47,16 +47,18 @@ def rdap_domain(domain):
         return('')
 
 def executa():
-    subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 assetfinder -subs-only '+domain+' >> /docker/data/'+target+'/temp/'+saida+' || true', shell=True)
+    subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 subfinder -d '+domain+' -oJ -silent >> /docker/data/'+target+'/temp/'+saida+' || true', shell=True)
 
 def parse():
-    with open ('/docker/data/teste/temp/'+saida) as file:
-        for line in file:
+    with open ('/docker/data/teste/temp/'+saida) as json_file:
+        for line in json_file:
+            json_line = line.rstrip('\n')
+            jsondata = json.loads(json_line)
             dic_subdomain['timestamp'] = hora
-            dic_subdomain['server.address'] = line.rstrip('\n')
-            dic_subdomain['server.domain'] = line.rstrip('\n')
+            dic_subdomain['server.address'] = jsondata['host']
+            dic_subdomain['server.domain'] = jsondata['host']
             try:
-                dic_subdomain['server.ip'] = socket.gethostbyname(line.rstrip('\n'))
+                dic_subdomain['server.ip'] = socket.gethostbyname(jsondata['host'])
             except:
                 dic_subdomain['server.ip'] = '0.0.0.0'
             dic_subdomain['vulnerability.scanner.vendor'] = scanner

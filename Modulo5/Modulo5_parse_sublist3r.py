@@ -20,10 +20,10 @@ headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
 url = 'https://localhost:9200/'+target+'-subdomain/_doc?refresh'
 auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
 hora = strftime("%Y-%m-%dT%H:%M:%S%Z")
-scanner = 'assetfinder'
+scanner = 'sublist3r'
 dic_subdomain = {}
 x = str(uuid.uuid1()).split('-')[0]
-container_name = target+'-'+x+'-assetfinder'
+container_name = target+'-'+x+'-sublist3r'
 saida = 'assetfinder-'+x+'.txt'
 
 def rdap_ip(ip):
@@ -47,7 +47,7 @@ def rdap_domain(domain):
         return('')
 
 def executa():
-    subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 assetfinder -subs-only '+domain+' >> /docker/data/'+target+'/temp/'+saida+' || true', shell=True)
+    subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 sublist3r -d '+domain+' -o /data/'+saida+' || true', shell=True)
 
 def parse():
     with open ('/docker/data/teste/temp/'+saida) as file:
