@@ -1,0 +1,48 @@
+{
+"biblioteca":{
+                "prateleira01" : [
+                      {"titulo" : "Livro 01 - Prateleira 01", "genero":"Terror", "paginas": "563"},
+                      {"titulo" : "Livro 02 - Prateleira 01", "genero":"Suspense", "paginas": "283"},
+                      {"titulo" : "Livro 03 - Prateleira 01", "genero":"Acao", "paginas": "325"},
+                      {"titulo" : "Livro 04 - Prateleira 01", "genero":"Romance", "paginas": "478"}
+                      ],
+                "prateleira02" : [
+                      {"titulo" : "Livro 05 - Prateleira 02", "genero":"Acao", "paginas": "423"},
+                      {"titulo" : "Livro 06 - Prateleira 02", "genero":"Suspense", "paginas": "852"},
+                      {"titulo" : "Livro 07 - Prateleira 02", "genero":"Acao", "paginas": "123"},
+                      {"titulo" : "Livro 08 - Prateleira 02", "genero":"Romance", "paginas": "784"}
+                      ],
+                "prateleira03" : [
+                      {"titulo" : "Livro 09 - Prateleira 03", "genero":"Terror", "paginas": "430"},
+                      {"titulo" : "Livro 10 - Prateleira 03", "genero":"Romance", "paginas": "54"},
+                      {"titulo" : "Livro 11 - Prateleira 03", "genero":"Acao", "paginas": "521"},
+                      {"titulo" : "Livro 12 - Prateleira 03", "genero":"Romance", "paginas": "264"}
+                      ]
+            },
+"clientes":{
+			"Cliente 01" : {
+							"emprestimo" : "Livro 05 - Prateleira 02",
+							"data_retirada" : "01/01/2000",
+							"ativo" : "true",
+							"multa_em_atraso" : "10.56"
+							},
+			"Cliente 02" : {
+							"emprestimo" : "Livro 01 - Prateleira 02",
+							"data_retirada" : "01/05/2000",
+							"ativo" : "true",
+							"multa_em_atraso" : "0"
+							},			
+			"Cliente 03" : {
+							"emprestimo" : "Livro 12 - Prateleira 03",
+							"data_retirada" : "25/09/2000",
+							"ativo" : "true",
+							"multa_em_atraso" : "0"
+							},
+			"Cliente 04" : {
+							"emprestimo" : "Null",
+							"data_retirada" : "Null",
+							"ativo" : "False",
+							"multa_em_atraso" : "51.35"
+							}
+	}
+}

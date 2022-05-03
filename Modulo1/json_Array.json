@@ -1,0 +1,12 @@
+{
+"Key01" :
+  [ {"Key01-Array01" : "Key01ValueArray01"},
+    {"Key01-Array02" : "Key01ValueArray02"},
+    {"Key01-Array03" : "Key01ValueArray03"}
+   ],
+"Key02" :
+  [{"Key02-Array01" : "Key02ValueArray01"},
+   {"Key02-Array02" : "Key02ValueArray02"},
+   {"Key02-Array03" : "Key02ValueArray03"}
+  ]
+}
