@@ -9,7 +9,7 @@ services:
       - discovery.seed_hosts=database-node1
       - cluster.initial_master_nodes=database-node1
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xmx1g -Xms1g"
+      - "ES_JAVA_OPTS=-Xmx4g -Xms4g"
     ulimits:
       memlock:
         soft: -1
@@ -19,10 +19,6 @@ services:
         hard: 65536
     volumes:
       - ./data-es:/usr/share/elasticsearch/data
-      - ./tls/root-ca.pem:/usr/share/elasticsearch/config/root-ca.pem
-      - ./tls/admin.pem:/usr/share/elasticsearch/config/admin.pem
-      - ./tls/admin-key.pem:/usr/share/elasticsearch/config/admin-key.pem
-      - ./internal_users.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/internal_users.yml
     ports:
       - 9200:9200
       - 9300:9300
