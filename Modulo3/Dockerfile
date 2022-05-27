@@ -26,6 +26,8 @@ RUN apt-get install python3-pip -y
 
 RUN pip3 install uuid
 
+RUN  go env -w GO111MODULE=auto
+
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN mv /root/go/bin/subfinder /usr/bin/
 
