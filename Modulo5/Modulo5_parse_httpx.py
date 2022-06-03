@@ -28,7 +28,7 @@ subdomain = sys.argv[2]
 ip = sys.argv[3]
 
 def executa(url):
-    result = subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 echo "'+url+'" | httpx --silent || true', shell=True)
+    result = subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 /bin/bash -c "echo '+url+' | httpx --silent" || true', shell=True)
     return(result)
 
 def parse():
