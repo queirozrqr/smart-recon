@@ -29,7 +29,7 @@ subdomain = sys.argv[3]
 ip = sys.argv[4]
 
 def executa(url2):
-    result = subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 echo "'+url2+'" | waybackurls || true', shell=True)
+    result = subprocess.check_output('docker run --rm --name '+container_name+' -v /docker/data/'+target+'/temp:/data kali-tools:2.0 /bin/bash -c "echo "'+url2+'" | waybackurls" || true', shell=True)
     return(result.decode("utf-8")[:-1].split('\n'))
 def parse():
 	list_sistemas = executa(url2)
