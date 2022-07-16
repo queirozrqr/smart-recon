@@ -5,7 +5,7 @@ with open('/docker/data/'+target+'/temp/'+saida) as jsonfile:
             jsondata = json.loads(jsonline)
             for i in jsondata:
                 if('http' in jsondata['matched-at'] or 'https' in jsondata['matched-at']):
-                    url = 'https://localhost:9200/'+target+'-webvuln/_doc?refresh'
+                    url = 'https://$2:9200/'+target+'-webvuln/_doc?refresh'
                     dic_web['vulnerability.name'] = jsondata['info']['name']
                     dic_web['vulnerability.severity'],= jsondata['info']['severity']
                     dic_web['server.port'] = sys.argv[6]
@@ -51,7 +51,7 @@ with open('/docker/data/'+target+'/temp/'+saida) as jsonfile:
                     #r = requests.post(url, headers=headers, auth=auth, data=json.dumps(data), verify=False)
                     #print (r.text)
                 else:
-                    url = 'https://localhost:9200/'+target+'-infravuln/_doc?refresh'
+                    url = 'https://$2:9200/'+target+'-infravuln/_doc?refresh'
                     dic_infra['server.address'] = sys.argv[2]
                     try:
                         dic_infra['server.ip'] = jsondata['ip']

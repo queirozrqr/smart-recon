@@ -17,7 +17,7 @@ from pathlib import Path
 
 target = sys.argv[1]
 headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
+auth=('admin', $3)
 lista_ips = []
 lista_index = ['subdomain','portscan','webenum','webvuln','infravuln']
 json_parse = ''
@@ -25,7 +25,7 @@ dic_ip = {}
 
 def consulta_bases(index):
 	data = {"size":10000}
-	url = 'https://localhost:9200/'+target+'-'+index+'/_search'
+	url = 'https://$2:9200/'+target+'-'+index+'/_search'
 	get_doc = requests.get(url, headers=headers, auth=auth, data=json.dumps(data), verify=False)
 	parse_scan = json.loads(get_doc.text)
 	return(parse_scan)

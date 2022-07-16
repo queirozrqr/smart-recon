@@ -15,12 +15,12 @@ from pathlib import Path
 
 target = sys.argv[1]
 headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-url = 'https://localhost:9200/'+target+'-subdomain/_search'
-url_temp = 'https://localhost:9200/'+target+'-subdomain-temp/_search'
-url_post = 'https://localhost:9200/'+target+'-subdomain/_doc?refresh'
-url_sistemas = 'https://localhost:9200/'+target+'-webenum/_search'
-url_web = 'https://localhost:9200/'+target+'-webvuln/_search'
-auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
+url = 'https://$2:9200/'+target+'-subdomain/_search'
+url_temp = 'https://$2:9200/'+target+'-subdomain-temp/_search'
+url_post = 'https://$2:9200/'+target+'-subdomain/_doc?refresh'
+url_sistemas = 'https://$2:9200/'+target+'-webenum/_search'
+url_web = 'https://$2:9200/'+target+'-webvuln/_search'
+auth=('admin', $3)
 hora = strftime("%Y-%m-%dT%H:%M:%S%Z")
 scanner = 'monitora_enc'
 dic_subdomain = {}
@@ -81,7 +81,7 @@ def encadeamento_nmap(list_nmap):
 	message = "[+] PROCESSANDO NMAP"
 	envio_telegram(message)
 	os.system('cat /docker/data/'+target+'/temp/nmap_parallel.log | parallel -u')
-	url_nmap = 'https://localhost:9200/'+target+'-portscan/_search'
+	url_nmap = 'https://$2:9200/'+target+'-portscan/_search'
 	data = {"size":10000}
 	get_doc = requests.get(url_nmap, headers=headers, auth=auth, data=json.dumps(data), verify=False)
 	parse_scan = json.loads(get_doc.text)

@@ -1,6 +1,6 @@
 echo "[+] Criando index SUBDOMAIN"
 echo
-curl -XPUT --insecure --user admin:'83d875fc-8789-11ec-9757-00505642c2bf' https://localhost:9200/$1-subdomain -H "Content-Type: application/json" -d @- <<EOF
+curl -XPUT --insecure --user admin:$3 https://$2:9200/$1-subdomain -H "Content-Type: application/json" -d @- <<EOF
 {
 	"mappings":{
 		"properties":{
@@ -19,7 +19,7 @@ echo
 echo
 echo "[+] Criando index PORT SCANNING"
 echo
-curl -XPUT --insecure --user admin:'83d875fc-8789-11ec-9757-00505642c2bf' https://localhost:9200/$1-portscan -H "Content-Type: application/json" -d @- <<EOF
+curl -XPUT --insecure --user admin:$3 https://$2:9200/$1-portscan -H "Content-Type: application/json" -d @- <<EOF
 {
 	"mappings":{
 		"properties":{
@@ -43,7 +43,7 @@ echo
 echo
 echo "[+] Criando index WEB ENUM"
 echo
-curl -XPUT --insecure --user admin:'83d875fc-8789-11ec-9757-00505642c2bf' https://localhost:9200/$1-webenum -H "Content-Type: application/json" -d @- <<EOF
+curl -XPUT --insecure --user admin:$3 https://$2:9200/$1-webenum -H "Content-Type: application/json" -d @- <<EOF
 {
 	"mappings":{
 		"properties":{
@@ -67,7 +67,7 @@ echo
 echo"[+] Criando index WEB VULN"
 echo
 
-curl -XPUT --insecure --user admin:'83d875fc-8789-11ec-9757-00505642c2bf' https://localhost:9200/$1-webvuln -H "Content-Type: application/json" -d @- <<EOF
+curl -XPUT --insecure --user admin:$3 https://$2:9200/$1-webvuln -H "Content-Type: application/json" -d @- <<EOF
 {
 	"mappings":{
 		"properties":{
@@ -95,7 +95,7 @@ echo
 echo"[+] Criando index INFRA VULN"
 echo
 echo
-curl -XPUT --insecure --user admin:'83d875fc-8789-11ec-9757-00505642c2bf' https://localhost:9200/$1-infravuln -H "Content-Type: application/json" -d @- <<EOF
+curl -XPUT --insecure --user admin:$3 https://$2:9200/$1-infravuln -H "Content-Type: application/json" -d @- <<EOF
 {
 	"mappings":{
 		"properties":{

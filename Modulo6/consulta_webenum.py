@@ -17,8 +17,8 @@ from pathlib import Path
 
 target = sys.argv[1]
 headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-url = 'https://localhost:9200/'+target+'-webenum/_search'
-auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
+url = 'https://$2:9200/'+target+'-webenum/_search'
+auth=('admin', $3)
 
 def consulta_subdomain():
 	data = {"size":10000}

@@ -16,8 +16,8 @@ from pathlib import Path
 
 target = sys.argv[1]
 headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-url = 'https://localhost:9200/'+target+'-webvuln/_doc?refresh'
-auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
+url = 'https://$2:9200/'+target+'-webvuln/_doc?refresh'
+auth=('admin', $3)
 hora = strftime("%Y-%m-%dT%H:%M:%S%Z")
 scanner = 'nuclei'
 x = str(uuid.uuid1()).split('-')[0]
@@ -40,7 +40,7 @@ def parse():
             jsondata = json.loads(jsonline)
             for i in jsondata:
                 if('http' in jsondata['matched-at'] or 'https' in jsondata['matched-at']):
-                    url = 'https://localhost:9200/'+target+'-webvuln/_doc?refresh'
+                    url = 'https://$2:9200/'+target+'-webvuln/_doc?refresh'
                     dic_web['vulnerability.name'] = jsondata['info']['name']
                     dic_web['vulnerability.severity'] = jsondata['info']['severity']
                     try:
@@ -83,7 +83,7 @@ def parse():
                     'vulnerability.scanner.vendor':scanner
                     }
                 else:
-                    url = 'https://localhost:9200/'+target+'-infravuln/_doc?refresh'
+                    url = 'https://$2:9200/'+target+'-infravuln/_doc?refresh'
                     dic_infra['server.address'] = sys.argv[3]
                     dic_infra['vulnerability.name'] = jsondata['info']['name']
                     dic_infra['vulnerability.severity'] = jsondata['info']['severity']

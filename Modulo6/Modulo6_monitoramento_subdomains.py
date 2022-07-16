@@ -15,10 +15,10 @@ from pathlib import Path
 
 target = sys.argv[1]
 headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-url = 'https://localhost:9200/'+target+'-subdomain/_search'
-url_temp = 'https://localhost:9200/'+target+'-subdomain-temp/_search'
-url_post = 'https://localhost:9200/'+target+'-subdomain/_doc?refresh'
-auth=('admin', '83d875fc-8789-11ec-9757-00505642c2bf')
+url = 'https://$2:9200/'+target+'-subdomain/_search'
+url_temp = 'https://$2:9200/'+target+'-subdomain-temp/_search'
+url_post = 'https://$2:9200/'+target+'-subdomain/_doc?refresh'
+auth=('admin', $3)
 hora = strftime("%Y-%m-%dT%H:%M:%S%Z")
 scanner = 'monitora_subs'
 dic_subdomain = {}
